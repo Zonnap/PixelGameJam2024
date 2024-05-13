@@ -1,0 +1,10 @@
+[gd_resource type="QuadMesh" load_steps=2 format=3 uid="uid://bl7e3asty01x1"]
+
+[ext_resource type="Material" uid="uid://dug2sl3ttrowf" path="res://Shaders/Water.tres" id="1_4o4dr"]
+
+[resource]
+material = ExtResource("1_4o4dr")
+size = Vector2(500, 500)
+subdivide_width = 500
+subdivide_depth = 500
+orientation = 1

@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="Pixel Game Jam 2024"
+run/main_scene="res://Scenes/Map.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 
 [rendering]
 

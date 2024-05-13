@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2530t1s64l4"]
+
+[ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
+[ext_resource type="Script" path="res://Scenes/WaterPlaneBouyancy.gd" id="2_gdvid"]
+[ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_xot8h"]
+[ext_resource type="Script" path="res://Scenes/Cube.gd" id="3_yriy5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
+
+[sub_resource type="Sky" id="Sky_w1vlv"]
+sky_material = SubResource("ProceduralSkyMaterial_hfesf")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_f0so0"]
+background_mode = 2
+background_energy_multiplier = 1.61
+sky = SubResource("Sky_w1vlv")
+fog_enabled = true
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_sm5bm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw1h2"]
+albedo_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o25ns"]
+material = SubResource("StandardMaterial3D_rw1h2")
+size = Vector3(10, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pj0tb"]
+size = Vector3(10, 3, 5)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458912, 1.30397)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f0so0")
+camera_attributes = SubResource("CameraAttributesPhysical_sm5bm")
+
+[node name="WaterPlane" parent="." instance=ExtResource("1_vjf4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00776267, 0)
+surface_material_override/0 = null
+script = ExtResource("2_gdvid")
+
+[node name="Cube" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99548, 0)
+mass = 5.0
+script = ExtResource("3_yriy5")
+float_force = 1.4
+water_angular_drag = 0.1
+
+[node name="ProbeContainer" type="Node3D" parent="Cube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, 2.5)
+
+[node name="Marker3D2" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, 2.5)
+
+[node name="Marker3D4" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, -2.5)
+
+[node name="Marker3D5" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 2.5)
+
+[node name="Marker3D6" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -2.5)
+
+[node name="Marker3D7" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, 0)
+
+[node name="Marker3D8" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, -2.5)
+
+[node name="Marker3D9" type="Marker3D" parent="Cube/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
+mesh = SubResource("BoxMesh_o25ns")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
+shape = SubResource("BoxShape3D_pj0tb")
+
+[node name="MainCamera" parent="." instance=ExtResource("2_xot8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.68255, 28.6073)
