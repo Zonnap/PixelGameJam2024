@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2530t1s64l4"]
+[gd_scene load_steps=13 format=3 uid="uid://c2530t1s64l4"]
 
 [ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
 [ext_resource type="Script" path="res://Scenes/WaterPlaneBouyancy.gd" id="2_gdvid"]
 [ext_resource type="Script" path="res://Scenes/Cube.gd" id="3_yriy5"]
+[ext_resource type="Texture2D" uid="uid://cvogrooa08fop" path="res://icon.svg" id="4_r3sqa"]
 [ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="5_pmyv6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
@@ -20,14 +21,14 @@ fog_enabled = true
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_sm5bm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw1h2"]
-albedo_color = Color(0.151276, 0.151276, 0.151276, 1)
+albedo_texture = ExtResource("4_r3sqa")
 
 [sub_resource type="BoxMesh" id="BoxMesh_o25ns"]
 material = SubResource("StandardMaterial3D_rw1h2")
-size = Vector3(10, 3, 5)
+size = Vector3(50, 10, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pj0tb"]
-size = Vector3(10, 3, 5)
+size = Vector3(50, 10, 15)
 
 [node name="Main" type="Node3D"]
 
@@ -45,40 +46,39 @@ script = ExtResource("2_gdvid")
 
 [node name="Cube" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99548, 0)
-mass = 5.0
+mass = 10.0
 script = ExtResource("3_yriy5")
-float_force = 1.4
 water_angular_drag = 0.1
 
 [node name="ProbeContainer" type="Node3D" parent="Cube"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
 [node name="Marker3D" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.6, 7.5)
 
 [node name="Marker3D2" type="Marker3D" parent="Cube/ProbeContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 
 [node name="Marker3D3" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.6, 7.5)
 
 [node name="Marker3D4" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.6, -7.5)
 
 [node name="Marker3D5" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 7.5)
 
 [node name="Marker3D6" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -7.5)
 
 [node name="Marker3D7" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.6, 0)
 
 [node name="Marker3D8" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.6, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.6, -7.5)
 
 [node name="Marker3D9" type="Marker3D" parent="Cube/ProbeContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.6, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
 mesh = SubResource("BoxMesh_o25ns")
@@ -87,4 +87,4 @@ mesh = SubResource("BoxMesh_o25ns")
 shape = SubResource("BoxShape3D_pj0tb")
 
 [node name="Player" parent="." instance=ExtResource("5_pmyv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.37065, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42983, 34.887, 0.50666)

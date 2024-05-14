@@ -1,23 +1,164 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4gvwmelr4hh5"]
+[gd_scene load_steps=11 format=3 uid="uid://b4gvwmelr4hh5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_m4ay3"]
 [ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_uoxk2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lclwo"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6afhk"]
+height = 1.2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pbcs3"]
+
+[sub_resource type="Animation" id="Animation_fvxal"]
+resource_name = "Jumping"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCamera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0523599, 0, 0.0174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uudnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCamera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6qpk8"]
+resource_name = "Landing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCamera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0523599, 0, -0.0174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6uwac"]
+resource_name = "Rolling"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCamera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-3.14159, 0, -0.0174533), Vector3(-6.28319, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us15k"]
+_data = {
+"Jumping": SubResource("Animation_fvxal"),
+"Landing": SubResource("Animation_6qpk8"),
+"RESET": SubResource("Animation_uudnm"),
+"Rolling": SubResource("Animation_6uwac")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553859, 0)
 script = ExtResource("1_m4ay3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00381947, 0.465701, -0.0138203)
 mesh = SubResource("CapsuleMesh_lclwo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Crouching_CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000111528, 0.0460526, 0.000641778)
+shape = SubResource("CapsuleShape3D_6afhk")
+disabled = true
+
+[node name="Standing_CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450222, 0)
 shape = SubResource("CapsuleShape3D_pbcs3")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="Neck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
-[node name="MainCamera" parent="Head" instance=ExtResource("2_uoxk2")]
+[node name="Head" type="Node3D" parent="Neck"]
+
+[node name="Eyes" type="Node3D" parent="Neck/Head"]
+
+[node name="MainCamera" parent="Neck/Head/Eyes" instance=ExtResource("2_uoxk2")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]
+libraries = {
+"": SubResource("AnimationLibrary_us15k")
+}
