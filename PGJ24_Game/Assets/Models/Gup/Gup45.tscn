@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://deovmubpadx4i"]
+
+[ext_resource type="ArrayMesh" uid="uid://co2x0rv8dqvd8" path="res://Assets/Models/Gup/Gup45Mesh.res" id="1_g46rn"]
+
+[node name="Gup45" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000110567, 0.00143525, 0.0015136)
+mesh = ExtResource("1_g46rn")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cicm742ln8pl5"]
+
+[ext_resource type="ArrayMesh" uid="uid://dik5umlxs0d28" path="res://Assets/Models/PirateShip/PirateShipMesh.res" id="1_avmlf"]
+
+[node name="PirateShip" type="MeshInstance3D"]
+mesh = ExtResource("1_avmlf")
