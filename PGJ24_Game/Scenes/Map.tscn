@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
 [ext_resource type="Script" path="res://Scenes/WaterPlaneBouyancy.gd" id="2_gdvid"]
-[ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_xot8h"]
 [ext_resource type="Script" path="res://Scenes/Cube.gd" id="3_yriy5"]
+[ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="5_pmyv6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
 
@@ -86,5 +86,5 @@ mesh = SubResource("BoxMesh_o25ns")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
 shape = SubResource("BoxShape3D_pj0tb")
 
-[node name="MainCamera" parent="." instance=ExtResource("2_xot8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.68255, 28.6073)
+[node name="Player" parent="." instance=ExtResource("5_pmyv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.37065, 0)
