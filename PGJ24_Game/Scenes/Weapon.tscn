@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ctc3errj8km0f"]
+
+[node name="Weapon" type="Node3D"]
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0.2, -0.5, 0.2)
+
+[node name="WeaponShadow" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
