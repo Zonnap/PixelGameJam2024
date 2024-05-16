@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bft022x81fq0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j510"]
+albedo_color = Color(0.290196, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ovdtf"]
+material = SubResource("StandardMaterial3D_1j510")
+
+[node name="BulletHit" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_ovdtf")

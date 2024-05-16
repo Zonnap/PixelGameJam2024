@@ -167,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="WeaponRig" type="Node3D" parent="Neck/Head/Eyes/MainCamera"]
 
 [node name="Weapon" parent="Neck/Head/Eyes/MainCamera/WeaponRig" instance=ExtResource("3_nus2q")]
-transform = Transform3D(0.0348995, 0, 0.999391, 0, 1, 0, -0.999391, 0, 0.0348995, -0.498426, 0, 0)
+transform = Transform3D(0.0348995, 0, 0.999391, 0, 1, 0, -0.999391, 0, 0.0348995, -0.498, 0, 0)
 WEAPON_TYPE = ExtResource("5_oa8xh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]

@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var main_camera = $Neck/Head/Eyes/MainCamera
 @onready var eyes = $Neck/Head/Eyes
 @onready var animation_player = $Neck/Head/Eyes/AnimationPlayer
+@onready var weapon = $Neck/Head/Eyes/MainCamera/WeaponRig/Weapon
 
 
 #Speed Variables
@@ -74,6 +75,10 @@ func _input(event):
 func _physics_process(delta):
 	#Movement Input
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	
+	#Shooting Logic
+	if Input.is_action_just_pressed("attack"):
+		weapon.attack()
 	
 	#Crouching Logic
 	if Input.is_action_pressed("crouch") || sliding:

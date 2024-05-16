@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctc3errj8km0f"]
+[gd_scene load_steps=4 format=3 uid="uid://ctc3errj8km0f"]
 
 [ext_resource type="Script" path="res://Scripts/init_weapon.gd" id="1_4xba6"]
 [ext_resource type="Resource" uid="uid://7ffgr3le0gkr" path="res://Resources/Crowbar/Crowbar.tres" id="2_xeys8"]
+[ext_resource type="ArrayMesh" uid="uid://dkib8opyncf3w" path="res://Resources/Crowbar/MeshCrowbar.res" id="3_kdegn"]
 
 [node name="Weapon" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.05, 0, 0)
 script = ExtResource("1_4xba6")
 WEAPON_TYPE = ExtResource("2_xeys8")
 
 [node name="WeaponMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0.2, -0.5, 0.2)
+mesh = ExtResource("3_kdegn")
 
 [node name="WeaponShadow" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+visible = false
