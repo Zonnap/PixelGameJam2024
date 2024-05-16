@@ -17,10 +17,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	submerged = false
 	for p in probes:
 		var depth = water.get_height(p.global_position) - p.global_position.y 

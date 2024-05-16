@@ -25,6 +25,7 @@ var sprinting = false;
 var crouching = false;
 var Free_Looking = false;
 var sliding = false;
+var climbing = false;
 
 #Slide Vars
 var SlideTimer = 0.0;
@@ -42,6 +43,8 @@ const head_bobbing_walking_intensity = 0.10;
 var head_bobbing_current_intensity = 0.0;
 var head_bobbing_vector = Vector2.ZERO
 var head_bobbing_index = 0.0;
+
+#Climbing Vars
 
 var last_velocity = Vector3.ZERO;
 var air_lerp_speed = 3.0;
@@ -127,6 +130,18 @@ func _physics_process(delta):
 		if SlideTimer <= 0:
 			sliding = false
 			Free_Looking = false;
+	
+	#Climbing Logic
+	if climbing:
+		velocity.y = 0
+		velocity.x = 0
+		if Input.is_action_pressed("forward"):
+			velocity.y = walking_speed
+		if Input.is_action_pressed("backward"):
+			velocity.y = -walking_speed
+	else:
+		#Gravity Calc
+		velocity.y -= gravity * delta
 			
 	#Head Bobbing Logic - could use a library
 	if sprinting:
@@ -148,14 +163,12 @@ func _physics_process(delta):
 		eyes.position.y = lerp(eyes.position.y, 0.0, delta*lerp_speed)
 		eyes.position.x = lerp(eyes.position.x, 0.0, delta*lerp_speed)
 	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		sliding = false
+		climbing = false
 		animation_player.play("Jumping")
 		
 	#Handle Landing

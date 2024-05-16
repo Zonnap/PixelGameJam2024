@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4gvwmelr4hh5"]
+[gd_scene load_steps=14 format=3 uid="uid://b4gvwmelr4hh5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_m4ay3"]
 [ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_uoxk2"]
+[ext_resource type="PackedScene" uid="uid://ctc3errj8km0f" path="res://Scenes/Weapon.tscn" id="3_nus2q"]
+[ext_resource type="Script" path="res://Scenes/Reticle.gd" id="3_udh4h"]
+[ext_resource type="Resource" uid="uid://bhh0j4pkp70qk" path="res://Resources/Crowbar_Left/Crowbar2.tres" id="5_oa8xh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lclwo"]
 
@@ -24,6 +27,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.0523599, 0, 0.0174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6qpk8"]
+resource_name = "Landing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCamera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0523599, 0, -0.0174533), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -65,34 +96,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6qpk8"]
-resource_name = "Landing"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainCamera:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0523599, 0, -0.0174533), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainCamera:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_6uwac"]
 resource_name = "Rolling"
 length = 0.6
@@ -129,12 +132,15 @@ _data = {
 "Rolling": SubResource("Animation_6uwac")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Climber"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553859, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_m4ay3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00381947, 0.465701, -0.0138203)
+visible = false
 mesh = SubResource("CapsuleMesh_lclwo")
 
 [node name="Crouching_CollisionShape" type="CollisionShape3D" parent="."]
@@ -158,7 +164,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="MainCamera" parent="Neck/Head/Eyes" instance=ExtResource("2_uoxk2")]
 
+[node name="WeaponRig" type="Node3D" parent="Neck/Head/Eyes/MainCamera"]
+
+[node name="Weapon" parent="Neck/Head/Eyes/MainCamera/WeaponRig" instance=ExtResource("3_nus2q")]
+transform = Transform3D(0.0348995, 0, 0.999391, 0, 1, 0, -0.999391, 0, 0.0348995, -0.498426, 0, 0)
+WEAPON_TYPE = ExtResource("5_oa8xh")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]
 libraries = {
 "": SubResource("AnimationLibrary_us15k")
 }
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Reticle" type="CenterContainer" parent="UserInterface" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_udh4h")
+RETICLE_LINES = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+PLAYER_CONTROLLER = NodePath("../..")
+
+[node name="Top" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
