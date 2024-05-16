@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_nw6vp")
 name = &"Crowbar"
-position = Vector3(0, 0, 0)
+position = Vector3(0.05, 0, 0)
 rotation = Vector3(0, 90, 0)
 mesh = ExtResource("1_x87cn")
 shadow = false

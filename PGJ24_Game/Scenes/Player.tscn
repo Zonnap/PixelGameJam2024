@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4gvwmelr4hh5"]
+[gd_scene load_steps=14 format=3 uid="uid://b4gvwmelr4hh5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_m4ay3"]
 [ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_uoxk2"]
 [ext_resource type="PackedScene" uid="uid://ctc3errj8km0f" path="res://Scenes/Weapon.tscn" id="3_nus2q"]
 [ext_resource type="Script" path="res://Scenes/Reticle.gd" id="3_udh4h"]
-[ext_resource type="Script" path="res://Scripts/init_weapon.gd" id="4_ld1nt"]
 [ext_resource type="Resource" uid="uid://bhh0j4pkp70qk" path="res://Resources/Crowbar_Left/Crowbar2.tres" id="5_oa8xh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lclwo"]
@@ -168,8 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="WeaponRig" type="Node3D" parent="Neck/Head/Eyes/MainCamera"]
 
 [node name="Weapon" parent="Neck/Head/Eyes/MainCamera/WeaponRig" instance=ExtResource("3_nus2q")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-script = ExtResource("4_ld1nt")
+transform = Transform3D(0.0348995, 0, 0.999391, 0, 1, 0, -0.999391, 0, 0.0348995, -0.498426, 0, 0)
 WEAPON_TYPE = ExtResource("5_oa8xh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]
