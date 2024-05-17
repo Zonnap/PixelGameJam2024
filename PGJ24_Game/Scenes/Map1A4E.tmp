@@ -58,7 +58,7 @@ script = ExtResource("1_dxbji")
 wait_time = 5.0
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -138,10 +138,9 @@ skeleton = NodePath("../..")
 [node name="SpawnerContainer" type="Node3D" parent="Cube"]
 
 [node name="Spawner1" type="Marker3D" parent="Cube/SpawnerContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6592, 7.9221, 0)
 
 [node name="Player" parent="." instance=ExtResource("5_pmyv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2796, 8.07589, 0.612608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42983, 7.7365, -5.08058)
 
 [node name="Fish" parent="." instance=ExtResource("6_tgp5d")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.38523, 6.8946, -13.1585)
