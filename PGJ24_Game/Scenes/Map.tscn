@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2530t1s64l4"]
+[gd_scene load_steps=21 format=3 uid="uid://c2530t1s64l4"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_dxbji"]
 [ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
@@ -23,13 +23,6 @@ fog_enabled = true
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_sm5bm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw1h2"]
-albedo_texture = ExtResource("4_r3sqa")
-
-[sub_resource type="BoxMesh" id="BoxMesh_o25ns"]
-material = SubResource("StandardMaterial3D_rw1h2")
-size = Vector3(50, 10, 15)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_pj0tb"]
 size = Vector3(50, 10, 15)
 
@@ -40,6 +33,17 @@ height = 10.0
 height = 10.0
 radius = 2.0
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_7s5yd"]
+vertices = PackedVector3Array(-24.5, 5.5, -7, -24.5, 5.5, 7, 24.5, 5.5, 7, 24.5, 5.5, -7)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw1h2"]
+albedo_texture = ExtResource("4_r3sqa")
+
+[sub_resource type="BoxMesh" id="BoxMesh_o25ns"]
+material = SubResource("StandardMaterial3D_rw1h2")
+size = Vector3(50, 10, 15)
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv7ft"]
 vertices = PackedVector3Array(-149.5, 85.5971, -149.5, -149.5, 85.5971, 149.5, 149.5, 85.5971, 149.5, 149.5, 85.5971, -149.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
@@ -49,6 +53,12 @@ size = Vector3(300, 300, 300)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dxbji")
+
+[node name="StartTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="WaveTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458912, 1.30397)
@@ -63,7 +73,7 @@ surface_material_override/0 = null
 script = ExtResource("2_gdvid")
 
 [node name="Cube" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99548, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00186205, 1.99548, -0.00864863)
 mass = 10.0
 script = ExtResource("3_yriy5")
 water_angular_drag = 0.1
@@ -98,9 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.6, -7.5)
 [node name="Marker3D9" type="Marker3D" parent="Cube/ProbeContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.6, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
-mesh = SubResource("BoxMesh_o25ns")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
 shape = SubResource("BoxShape3D_pj0tb")
 
@@ -114,6 +121,27 @@ mesh = SubResource("CylinderMesh_fi00r")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cube"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08786, 6.03534, 1.85789)
 shape = SubResource("CylinderShape3D_4qik8")
+
+[node name="AINavigationRegion3D" type="NavigationRegion3D" parent="Cube"]
+navigation_mesh = SubResource("NavigationMesh_7s5yd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube/AINavigationRegion3D"]
+mesh = SubResource("BoxMesh_o25ns")
+skeleton = NodePath("../..")
+
+[node name="SpawnerContainer" type="Node3D" parent="Cube"]
+
+[node name="Spawner1" type="Marker3D" parent="Cube/SpawnerContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7363, 6.55998, -5.16078)
+
+[node name="Spawner2" type="Marker3D" parent="Cube/SpawnerContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0576, 6.305, 5.21028)
+
+[node name="Spawner3" type="Marker3D" parent="Cube/SpawnerContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3943, 6.55998, -5.16078)
+
+[node name="Spawner4" type="Marker3D" parent="Cube/SpawnerContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0729, 6.305, 5.21028)
 
 [node name="Player" parent="." instance=ExtResource("5_pmyv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42983, 7.7365, -5.08058)
