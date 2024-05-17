@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf0k1ulgn2jiy"]
+
+[ext_resource type="Script" path="res://Scenes/EnemyPirate.gd" id="1_pn5dn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0uth"]
+albedo_color = Color(0.76703, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3elld"]
+material = SubResource("StandardMaterial3D_n0uth")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_txekk"]
+
+[node name="EnemyPirate" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_pn5dn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3elld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_txekk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
