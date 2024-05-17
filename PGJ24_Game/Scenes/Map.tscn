@@ -141,7 +141,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6592, 7.9221, 0)
 
 [node name="Player" parent="." instance=ExtResource("5_pmyv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2796, 8.07589, 0.612608)
+transform = Transform3D(-0.0189706, 0, -0.99982, 0, 1, 0, 0.99982, 0, -0.0189706, -22.2796, 8.07589, 0.612608)
 
 [node name="Fish" parent="." instance=ExtResource("6_tgp5d")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.38523, 6.8946, -13.1585)
