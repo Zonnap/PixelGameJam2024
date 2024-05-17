@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_m4ay3"]
 [ext_resource type="PackedScene" uid="uid://dt8y278ol46c0" path="res://Scenes/MainCamera.tscn" id="2_uoxk2"]
 [ext_resource type="PackedScene" uid="uid://ctc3errj8km0f" path="res://Scenes/Weapon.tscn" id="3_nus2q"]
-[ext_resource type="Script" path="res://Scenes/Reticle.gd" id="3_udh4h"]
+[ext_resource type="Script" path="res://Scripts/Reticle.gd" id="3_udh4h"]
 [ext_resource type="Resource" uid="uid://bhh0j4pkp70qk" path="res://Resources/Crowbar_Left/Crowbar2.tres" id="5_oa8xh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lclwo"]

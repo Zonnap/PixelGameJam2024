@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2530t1s64l4"]
+[gd_scene load_steps=22 format=3 uid="uid://c2530t1s64l4"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_dxbji"]
 [ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Cube.gd" id="3_yriy5"]
 [ext_resource type="Texture2D" uid="uid://cvogrooa08fop" path="res://icon.svg" id="4_r3sqa"]
 [ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="5_pmyv6"]
-[ext_resource type="PackedScene" path="res://Scenes/Ladder.tscn" id="6_rs80t"]
-[ext_resource type="PackedScene" path="res://Scenes/Fish.tscn" id="6_tgp5d"]
+[ext_resource type="PackedScene" uid="uid://5m72i81ar00e" path="res://Scenes/Ladder.tscn" id="6_rs80t"]
+[ext_resource type="PackedScene" uid="uid://dgulv5s5ynf3l" path="res://Scenes/Fish.tscn" id="6_tgp5d"]
+[ext_resource type="PackedScene" uid="uid://bf0k1ulgn2jiy" path="res://Scenes/EnemyPirate.tscn" id="9_ihnnl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
 
@@ -58,6 +59,7 @@ script = ExtResource("1_dxbji")
 autostart = true
 
 [node name="WaveTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -74,6 +76,11 @@ script = ExtResource("2_gdvid")
 
 [node name="Cube" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00186205, 1.99548, -0.00864863)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
 mass = 10.0
 script = ExtResource("3_yriy5")
 water_angular_drag = 0.1
@@ -160,3 +167,8 @@ navigation_mesh = SubResource("NavigationMesh_gv7ft")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64.9029, 0)
 mesh = SubResource("BoxMesh_q2mll")
+
+[node name="EnemyPirate" parent="." instance=ExtResource("9_ihnnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3792, 8.15323, 0.861621)
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

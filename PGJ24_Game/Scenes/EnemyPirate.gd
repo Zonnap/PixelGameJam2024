@@ -6,6 +6,12 @@ extends CharacterBody3D
 
 var SPEED = 3
 
+func _ready():
+	call_deferred("_actor_setup")
+	
+func _actor_setup():
+	await get_tree().physics_frame
+
 func _physics_process(delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
