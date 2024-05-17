@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Cube.gd" id="3_yriy5"]
 [ext_resource type="Texture2D" uid="uid://cvogrooa08fop" path="res://icon.svg" id="4_r3sqa"]
 [ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="5_pmyv6"]
-[ext_resource type="PackedScene" path="res://Scenes/Ladder.tscn" id="6_rs80t"]
-[ext_resource type="PackedScene" path="res://Scenes/Fish.tscn" id="6_tgp5d"]
+[ext_resource type="PackedScene" uid="uid://5m72i81ar00e" path="res://Scenes/Ladder.tscn" id="6_rs80t"]
+[ext_resource type="PackedScene" uid="uid://dgulv5s5ynf3l" path="res://Scenes/Fish.tscn" id="6_tgp5d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
 
