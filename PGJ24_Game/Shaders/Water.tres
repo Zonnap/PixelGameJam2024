@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://dug2sl3ttrowf"]
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://dug2sl3ttrowf"]
 
 [ext_resource type="Shader" path="res://Shaders/Water.gdshader" id="1_frtbl"]
+[ext_resource type="Texture2D" uid="uid://6tjal5vv5y33" path="res://Resources/Water Texture.jpg" id="2_7w432"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_unpbn"]
 noise_type = 3
@@ -32,7 +33,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_0ebls")
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_frtbl")
 shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
 shader_parameter/albedo2 = Color(0, 0.47451, 0.764706, 1)
@@ -53,6 +54,7 @@ shader_parameter/edge_scale = 1.0
 shader_parameter/near = 1.0
 shader_parameter/far = 100.0
 shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/TEXTURE = ExtResource("2_7w432")
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_eyso5")
 shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_humoc")
 shader_parameter/wave = SubResource("NoiseTexture2D_yvgcw")

@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 
+
 var SPEED = 3
 
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 func _actor_setup():
 	await get_tree().physics_frame
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED

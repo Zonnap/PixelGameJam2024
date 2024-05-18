@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhdryfdob71ys"
-path.s3tc="res://.godot/imported/crowbar2_2.png-1a598489940be9bfd2b5135dfef5ca8c.s3tc.ctex"
+uid="uid://6tjal5vv5y33"
+path.s3tc="res://.godot/imported/Water Texture.jpg-07936be090445c0519dfbcb952da5c08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "9d99679cbb18f024524c9074506c17f1"
-}
 
 [deps]
 
-source_file="res://Resources/Crowbar_Left/crowbar2_2.png"
-dest_files=["res://.godot/imported/crowbar2_2.png-1a598489940be9bfd2b5135dfef5ca8c.s3tc.ctex"]
+source_file="res://Resources/Water Texture.jpg"
+dest_files=["res://.godot/imported/Water Texture.jpg-07936be090445c0519dfbcb952da5c08.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Resources/Crowbar_Left/crowbar2_2.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

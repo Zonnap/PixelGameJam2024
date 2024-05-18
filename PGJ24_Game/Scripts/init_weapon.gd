@@ -14,16 +14,17 @@ extends Node3D
 
 var raycast_test = preload("res://Scenes/raycast_test.tscn")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_weapon()
 	
 func _input(event):
 	if event.is_action_pressed("Weapon1"):
-		WEAPON_TYPE = load("res://Resources/Crowbar/Crowbar.tres")
+		WEAPON_TYPE = load("res://Assets/Models/Shark/Shark.tres")
 		load_weapon()
 	if event.is_action_pressed("Weapon2"):
-		WEAPON_TYPE = load("res://Resources/Crowbar_Left/Crowbar2.tres")
+		WEAPON_TYPE = load("res://Assets/Models/Gup/GUP.tres")
 		load_weapon()
 
 func load_weapon() -> void:
@@ -31,6 +32,7 @@ func load_weapon() -> void:
 		weapon_mesh.mesh = WEAPON_TYPE.mesh
 		position = WEAPON_TYPE.position
 		rotation_degrees = WEAPON_TYPE.rotation
+		scale = WEAPON_TYPE.scale
 		weapon_shadow.visible = WEAPON_TYPE.shadow
 func attack() -> void:
 	var space_state = main_camera.get_world_3d().direct_space_state

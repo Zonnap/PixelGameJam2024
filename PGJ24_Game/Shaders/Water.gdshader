@@ -3,6 +3,7 @@ render_mode depth_draw_always;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
+uniform sampler2D TEXTURE;
 
 uniform vec3 albedo : source_color;
 uniform vec3 albedo2 : source_color;
@@ -51,6 +52,7 @@ void vertex() {
 
 void fragment() {
 	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r;
+	float Water_texture = texture(TEXTURE, SCREEN_UV).r;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
 	depth = depth + VERTEX.z;
 	float depth_blend = exp((depth + depth_offset) * -beers_law);

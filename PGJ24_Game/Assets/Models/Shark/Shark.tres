@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://7ffgr3le0gkr"]
+
+[ext_resource type="ArrayMesh" uid="uid://cco6oomnm52gd" path="res://Assets/Models/Shark/SharkMesh.res" id="1_hfwj4"]
+[ext_resource type="Script" path="res://Scripts/Weapons.gd" id="2_2fwaa"]
+
+[resource]
+script = ExtResource("2_2fwaa")
+name = &"Shark"
+position = Vector3(0.099, -0.062, -0.18)
+rotation = Vector3(0, 104.5, 16.9)
+scale = Vector3(0.1, 0.1, 0.1)
+mesh = ExtResource("1_hfwj4")
+shadow = false
+damage_amount = 10.0
+bullet_amount = 10.0

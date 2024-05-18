@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var eyes = $Neck/Head/Eyes
 @onready var animation_player = $Neck/Head/Eyes/AnimationPlayer
 @onready var weapon = $Neck/Head/Eyes/MainCamera/WeaponRig/Weapon
+@onready var player = $"."
 
 
 #Speed Variables
@@ -206,3 +207,8 @@ func _physics_process(delta):
 
 	last_velocity = velocity
 	move_and_slide()
+
+
+func _on_kill_plane_body_entered(_body):
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://dug2sl3ttrowf" path="res://Shaders/Water.tres" id="1_4o4dr"]
 
 [resource]
+lightmap_size_hint = Vector2i(2502, 2502)
 material = ExtResource("1_4o4dr")
 size = Vector2(500, 500)
 subdivide_width = 500

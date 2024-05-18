@@ -7,7 +7,7 @@ extends RigidBody3D
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var water = get_node('/root/Main/WaterPlane')
 
-@onready var probes = $ProbeContainer.get_children()
+@onready var probes = $Bouyancy.get_children()
 
 var submerged := false
 

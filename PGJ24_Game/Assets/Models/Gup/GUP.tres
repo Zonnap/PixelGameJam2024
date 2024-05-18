@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://bhh0j4pkp70qk"]
+
+[ext_resource type="ArrayMesh" uid="uid://co2x0rv8dqvd8" path="res://Assets/Models/Gup/Gup45Mesh.res" id="1_ky0uh"]
+[ext_resource type="Script" path="res://Scripts/Weapons.gd" id="2_wu2tl"]
+
+[resource]
+script = ExtResource("2_wu2tl")
+name = &"GUP"
+position = Vector3(-0.539, 0, -1.11)
+rotation = Vector3(0.2, 69.2, 4.6)
+scale = Vector3(1, 1, 1)
+mesh = ExtResource("1_ky0uh")
+shadow = false
+damage_amount = 10.0

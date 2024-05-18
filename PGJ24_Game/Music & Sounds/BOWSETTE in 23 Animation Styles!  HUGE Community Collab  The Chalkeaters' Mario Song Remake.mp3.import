@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cub64yokc4bd8"
+path="res://.godot/imported/BOWSETTE in 23 Animation Styles!  HUGE Community Collab  The Chalkeaters' Mario Song Remake.mp3-fad4d99f34fac99636b8d2e877e2633a.mp3str"
+
+[deps]
+
+source_file="res://Music & Sounds/BOWSETTE in 23 Animation Styles!  HUGE Community Collab  The Chalkeaters' Mario Song Remake.mp3"
+dest_files=["res://.godot/imported/BOWSETTE in 23 Animation Styles!  HUGE Community Collab  The Chalkeaters' Mario Song Remake.mp3-fad4d99f34fac99636b8d2e877e2633a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
