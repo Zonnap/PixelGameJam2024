@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2530t1s64l4"]
+[gd_scene load_steps=22 format=3 uid="uid://c2530t1s64l4"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_dxbji"]
 [ext_resource type="PackedScene" uid="uid://dfkc050ilquje" path="res://Scenes/WaterPlane.tscn" id="1_vjf4n"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="5_pmyv6"]
 [ext_resource type="PackedScene" path="res://Scenes/Ladder.tscn" id="6_rs80t"]
 [ext_resource type="PackedScene" path="res://Scenes/Fish.tscn" id="6_tgp5d"]
+[ext_resource type="PackedScene" uid="uid://bf7mo5jtpeny4" path="res://Assets/Models/Seagulls/Seagulls.tscn" id="9_44wpi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfesf"]
 
@@ -157,6 +158,9 @@ navigation_mesh = SubResource("NavigationMesh_gv7ft")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64.9029, 0)
 mesh = SubResource("BoxMesh_q2mll")
+
+[node name="Seagulls" parent="." instance=ExtResource("9_44wpi")]
+transform = Transform3D(-10, 0, 2.53518e-05, 0, 10, 0, -2.53518e-05, 0, -10, 0, 44.0117, 0)
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

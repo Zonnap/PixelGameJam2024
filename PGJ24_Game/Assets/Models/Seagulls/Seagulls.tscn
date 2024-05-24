@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf7mo5jtpeny4"]
+
+[ext_resource type="Script" path="res://Scripts/SeagullsRotator.gd" id="1_x0f07"]
+[ext_resource type="Texture2D" uid="uid://dn2dmbhsqsns4" path="res://Assets/Models/Seagulls/Seagull.png" id="2_g8ixv"]
+[ext_resource type="AudioStream" uid="uid://c32d0j6qso5qs" path="res://Assets/Sound/Seagull Sounds.wav" id="2_xh0jd"]
+
+[sub_resource type="Animation" id="Animation_6jrpp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jf5sd"]
+resource_name = "Rotator"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.26573, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_354fo"]
+_data = {
+"RESET": SubResource("Animation_6jrpp"),
+"Rotator": SubResource("Animation_jf5sd")
+}
+
+[node name="Seagulls" type="Node3D"]
+transform = Transform3D(-10, 0, 2.53518e-05, 0, 10, 0, -2.53518e-05, 0, -10, 0, 0, 0)
+script = ExtResource("1_x0f07")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 2.98029, 0, -0.0459629)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(-0.826098, 0, 0.563526, 0, 1, 0, -0.563526, 0, -0.826098, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D2"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 2.98029, 0, -0.0459629)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(0.0749787, 0, -0.997185, 0, 1, 0, 0.997185, 0, 0.0749787, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D3"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 2.98029, 0, -0.0459629)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D4" type="Node3D" parent="."]
+transform = Transform3D(0.0749787, 0, -0.997185, 0, 1, 0, 0.997185, 0, 0.0749787, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D4"]
+transform = Transform3D(-0.623879, -0.781521, 3.41613e-08, 0, -4.37114e-08, -1, 0.781521, -0.623879, 2.72706e-08, 1.14453, 0, -1.03947)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D5" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D5"]
+transform = Transform3D(0.0749785, -0.997185, 4.35883e-08, 0, -4.37114e-08, -1, 0.997185, 0.0749785, -3.27741e-09, -0.00818849, 0, -1.61511)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D6" type="Node3D" parent="."]
+transform = Transform3D(-0.826098, 0, 0.563526, 0, 1, 0, -0.563526, 0, -0.826098, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D6"]
+transform = Transform3D(-0.52101, -0.853551, 3.73099e-08, 0, -4.37114e-08, -1, 0.853551, -0.52101, 2.27741e-08, 1.78721, 0, -2.10953)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D7" type="Node3D" parent="."]
+transform = Transform3D(0.0749787, 0, -0.997185, 0, 1, 0, 0.997185, 0, 0.0749787, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D7"]
+transform = Transform3D(0.90032, -0.435232, 1.90246e-08, 0, -4.37114e-08, -1, 0.435232, 0.90032, -3.93542e-08, -2.56466, 0, -1.6772)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="Node3D8" type="Node3D" parent="."]
+transform = Transform3D(0.0749787, 0, -0.997185, 0, 1, 0, 0.997185, 0, 0.0749787, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D8"]
+transform = Transform3D(0.993151, 0.116844, -5.10741e-09, 0, -4.37114e-08, -1, -0.116844, 0.993151, -4.3412e-08, -3.14233, 0.0101414, 0.141417)
+offset = Vector2(5, 5)
+texture_filter = 0
+texture = ExtResource("2_g8ixv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_354fo")
+}
+autoplay = "Rotator"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_xh0jd")
+autoplay = true
