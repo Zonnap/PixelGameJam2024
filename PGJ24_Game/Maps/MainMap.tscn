@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://72eydbcqlvjq"]
+
+[ext_resource type="PackedScene" uid="uid://cicm742ln8pl5" path="res://Assets/Models/PirateShip/PirateShip.tscn" id="1_8eoq8"]
+[ext_resource type="PackedScene" uid="uid://bf7mo5jtpeny4" path="res://Assets/Models/Seagulls/Seagulls.tscn" id="2_olri3"]
+[ext_resource type="PackedScene" uid="uid://b4gvwmelr4hh5" path="res://Scenes/Player.tscn" id="3_uxqew"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lntng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ag773"]
+transparency = 1
+albedo_color = Color(1.63645e-06, 0.295608, 0.41331, 1)
+
+[sub_resource type="Environment" id="Environment_7yad3"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_hamg3"]
+
+[node name="MainMap" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(353.385, 0, 0, 0, 4.949, 0, 0, 0, 400, 0, 0, 0)
+mesh = SubResource("PlaneMesh_lntng")
+material = SubResource("StandardMaterial3D_ag773")
+
+[node name="PirateShip" parent="." instance=ExtResource("1_8eoq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.476896, -0.399051, -0.20797)
+
+[node name="Seagulls" parent="." instance=ExtResource("2_olri3")]
+transform = Transform3D(-10, 0, 2.53518e-05, 0, 10, 0, -2.53518e-05, 0, -10, -1.48021, 35.4139, -1.39767)
+
+[node name="Player" parent="." instance=ExtResource("3_uxqew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110989, 2.00584, 5.6952)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.88075, -0.41831, 0.222026, 4.63619e-08, 0.468824, 0.883292, -0.473581, 0.777959, -0.412917, 0, 0, 0)
+light_energy = 3.362
+light_indirect_energy = 2.832
+light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7yad3")
+camera_attributes = SubResource("CameraAttributesPhysical_hamg3")
